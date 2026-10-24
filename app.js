@@ -3,6 +3,22 @@ const nav=document.querySelector('.nav');
 menuButton?.addEventListener('click',()=>{const open=menuButton.getAttribute('aria-expanded')!=='true';menuButton.setAttribute('aria-expanded',String(open));nav.classList.toggle('open',open);menuButton.querySelector('.menu-label').textContent=open?'Chiudi':'Menu';});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&nav?.classList.contains('open')){menuButton.click();menuButton.focus();}});
 nav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{if(nav.classList.contains('open'))menuButton.click();}));
+// Keep page and anchor navigation indicators in sync, including back/forward.
+function updateCurrentNavigation(){
+  const links=[...nav?.querySelectorAll('a[href]')||[]];
+  const current=new URL(window.location.href);
+  const normalize=pathname=>pathname.replace(/\/index\.html$/,'/');
+  const samePage=links.filter(link=>normalize(new URL(link.href).pathname)===normalize(current.pathname));
+  const anchor=samePage.find(link=>new URL(link.href).hash===current.hash&&current.hash);
+  const selected=anchor||samePage.find(link=>!new URL(link.href).hash);
+  links.forEach(link=>{
+    if(link===selected)link.setAttribute('aria-current',anchor?'location':'page');
+    else link.removeAttribute('aria-current');
+  });
+}
+window.addEventListener('hashchange',updateCurrentNavigation);
+window.addEventListener('pageshow',updateCurrentNavigation);
+updateCurrentNavigation();
 const tabs=[...document.querySelectorAll('[role="tab"]')];
 function activateTab(tab){tabs.forEach(t=>{const active=t===tab;t.setAttribute('aria-selected',String(active));t.tabIndex=active?0:-1;document.getElementById(t.getAttribute('aria-controls')).hidden=!active;});}
 tabs.forEach((tab,i)=>{tab.addEventListener('click',()=>activateTab(tab));tab.addEventListener('keydown',e=>{let next;if(e.key==='ArrowRight')next=(i+1)%tabs.length;if(e.key==='ArrowLeft')next=(i-1+tabs.length)%tabs.length;if(e.key==='Home')next=0;if(e.key==='End')next=tabs.length-1;if(next!==undefined){e.preventDefault();activateTab(tabs[next]);tabs[next].focus();}});});
