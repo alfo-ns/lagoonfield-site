@@ -622,6 +622,15 @@ small,
   align-items: start;
 }
 
+.product-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--color-border-screen);
+  border-radius: 8px;
+  box-shadow: 0 20px 50px var(--color-shadow-screen);
+}
+
 .product-copy h3 {
   font-size: 31px;
   margin: 12px 0 20px;
