@@ -1371,8 +1371,9 @@ small,
 
 .person-portrait,
 .person-card .initial {
-  width: 100%;
-  height: clamp(220px,26vw,340px);
+  width: 304px;
+  max-width: 100%;
+  height: 240px;
   background: var(--color-surface-portrait);
   position: relative;
   overflow: hidden;
@@ -1390,10 +1391,12 @@ small,
 
 .person-portrait img {
   display: block;
-  height: 100%;
-  width: 80%;
-  object-fit: cover;
-  object-position: center 35%;
+  flex: 0 0 auto;
+  width: 240px;
+  max-width: calc(100% - 32px);
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
 }
 
 .portrait-contours {
@@ -2035,13 +2038,13 @@ small,
   }
 
   .people {
+    grid-template-columns: minmax(0,1fr);
     gap: 22px;
     margin-top: 40px;
   }
 
   .person-portrait,
   .person-card .initial {
-    height: clamp(150px,40vw,260px);
     font-size: 42px;
     padding: 15px;
   }
