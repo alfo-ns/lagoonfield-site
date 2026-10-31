@@ -25,7 +25,7 @@ Il video è silenzioso, in loop e con riproduzione inline. La pausa mostra l’i
 Per una futura sostituzione con il file 1080p, copia il nuovo MP4 in assets e aggiorna data-src nel tag source di index.html. Non è necessario modificare il layout.
 
 ## Contatti e contenuti
-Il modulo prepara un’email per sales@lagoonfield.com: l’utente la invia dal proprio programma di posta. Non è presente un servizio di invio automatico dal server.
+Il modulo prepara un’email per sales@lagoonfield.io: l’utente la invia dal proprio programma di posta. Non è presente un servizio di invio automatico dal server.
 La pagina Chi siamo contiene il testo segnaposto concordato, da completare prima del lancio definitivo. Sono indicati Alfonso Severino (founder) e Angelo Rondinò (co-founder). I prezzi della presentazione non sono inclusi nel sito.
 
 ## Anteprima locale

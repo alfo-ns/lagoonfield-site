@@ -247,7 +247,7 @@ small,
   align-items: center;
   gap: clamp(16px,3vw,48px);
   padding-left: var(--pad);
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .nav a {
@@ -279,6 +279,8 @@ small,
   background: var(--color-accent);
   color: var(--color-surface);
   gap: 24px;
+  font-size: 16px;
+
 }
 
 /* Mantiene la priorità rispetto a .nav a:hover. */
@@ -1343,12 +1345,11 @@ small,
 
 .about-intro {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 70px;
+  gap: 30px;
 }
 
 .about-intro p {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.6;
   color: var(--color-text-secondary);
 }
